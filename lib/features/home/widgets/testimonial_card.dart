@@ -1,3 +1,5 @@
+// File: lib/features/home/widgets/testimonial_card.dart
+
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/app_text_theme.dart';
@@ -13,6 +15,18 @@ class TestimonialCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isSmall = ResponsiveUtils.isSmallPhone(context);
+    final words = testimonial.text.split(' ');
+
+    String beforeBest = '';
+    String afterBest = '';
+
+    if (words.length > 5) {
+      beforeBest = words.take(5).join(' ');
+      afterBest = words.skip(5).join(' ');
+    } else {
+      beforeBest = testimonial.text;
+      afterBest = '';
+    }
 
     return Container(
       padding: EdgeInsets.all(
@@ -49,9 +63,33 @@ class TestimonialCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: AppDimensions.paddingM),
-          Text(
-            testimonial.text,
-            style: AppTextTheme.bodyLarge.copyWith(fontSize: isSmall ? 14 : 16),
+          RichText(
+            text: TextSpan(
+              children: [
+                if (beforeBest.isNotEmpty)
+                  TextSpan(
+                    text: '$beforeBest ',
+                    style: AppTextTheme.bodyLarge.copyWith(
+                      fontSize: isSmall ? 14 : 16,
+                    ),
+                  ),
+                TextSpan(
+                  text: 'افضل',
+                  style: AppTextTheme.bodyLarge.copyWith(
+                    color: AppColors.primaryOrange,
+                    fontWeight: FontWeight.bold,
+                    fontSize: isSmall ? 14 : 16,
+                  ),
+                ),
+                if (afterBest.isNotEmpty)
+                  TextSpan(
+                    text: ' $afterBest',
+                    style: AppTextTheme.bodyLarge.copyWith(
+                      fontSize: isSmall ? 14 : 16,
+                    ),
+                  ),
+              ],
+            ),
           ),
         ],
       ),
