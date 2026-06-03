@@ -6,10 +6,6 @@ import 'pricing_card.dart';
 class PricingSection extends StatelessWidget {
   const PricingSection({super.key});
 
-  static void _onFreePressed() {}
-
-  static void _onPaidPressed() {}
-
   @override
   Widget build(BuildContext context) {
     final bool isSmall = ResponsiveUtils.isSmallPhone(context);
@@ -32,24 +28,55 @@ class PricingSection extends StatelessWidget {
       padding: EdgeInsets.all(
         isSmall ? AppDimensions.paddingL : AppDimensions.paddingXXL,
       ),
-      child: Column(
-        children: [
-          const PricingCard(
-            title: 'الخطة المجانية',
-            price: 'مجانا',
-            features: freeFeatures,
-            isFree: true,
-            onPressed: _onFreePressed,
-          ),
-          const SizedBox(height: AppDimensions.paddingL),
-          const PricingCard(
-            title: 'الخطة المدفوعة',
-            price: '\$9.99 / شهرًا',
-            features: paidFeatures,
-            isFree: false,
-            onPressed: _onPaidPressed,
-          ),
-        ],
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          if (constraints.maxWidth > 600) {
+            return Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  child: PricingCard(
+                    title: 'الخطة المجانية',
+                    price: 'مجانا',
+                    features: freeFeatures,
+                    isFree: true,
+                    onPressed: () {},
+                  ),
+                ),
+                const SizedBox(width: AppDimensions.paddingL),
+                Expanded(
+                  child: PricingCard(
+                    title: 'الخطة المدفوعة',
+                    price: '\$9.99 / شهرًا',
+                    features: paidFeatures,
+                    isFree: false,
+                    onPressed: () {},
+                  ),
+                ),
+              ],
+            );
+          }
+
+          return Column(
+            children: [
+              PricingCard(
+                title: 'الخطة المجانية',
+                price: 'مجانا',
+                features: freeFeatures,
+                isFree: true,
+                onPressed: () {},
+              ),
+              const SizedBox(height: AppDimensions.paddingL),
+              PricingCard(
+                title: 'الخطة المدفوعة',
+                price: '\$9.99 / شهرًا',
+                features: paidFeatures,
+                isFree: false,
+                onPressed: () {},
+              ),
+            ],
+          );
+        },
       ),
     );
   }
