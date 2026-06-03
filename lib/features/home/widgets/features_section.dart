@@ -52,20 +52,25 @@ class FeaturesSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: AppDimensions.paddingL),
-          GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: ResponsiveUtils.isSmallPhone(context) ? 1 : 2,
-              crossAxisSpacing: AppDimensions.paddingM,
-              mainAxisSpacing: AppDimensions.paddingM,
-              childAspectRatio: ResponsiveUtils.isSmallPhone(context)
-                  ? 2.5
-                  : 1.1,
-            ),
-            itemCount: features.length,
-            itemBuilder: (context, index) =>
-                FeatureCard(feature: features[index]),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              int crossAxisCount = constraints.maxWidth < 500 ? 1 : 2;
+              double childAspectRatio = constraints.maxWidth < 500 ? 2.8 : 1.3;
+
+              return GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: crossAxisCount,
+                  crossAxisSpacing: AppDimensions.paddingM,
+                  mainAxisSpacing: AppDimensions.paddingM,
+                  childAspectRatio: childAspectRatio,
+                ),
+                itemCount: features.length,
+                itemBuilder: (context, index) =>
+                    FeatureCard(feature: features[index]),
+              );
+            },
           ),
         ],
       ),
