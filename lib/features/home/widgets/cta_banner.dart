@@ -1,3 +1,5 @@
+// File: lib/features/home/widgets/cta_banner.dart
+
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/app_text_theme.dart';
@@ -29,20 +31,55 @@ class CtaBanner extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Text(
-            AppStrings.ctaTitle,
-            style: AppTextTheme.headlineMedium.copyWith(
-              color: Colors.white,
-              fontSize: isSmall ? 22 : 24,
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: 'ابدأ ',
+                  style: AppTextTheme.headlineMedium.copyWith(
+                    color: Colors.white,
+                    fontSize: isSmall ? 22 : 24,
+                  ),
+                ),
+                TextSpan(
+                  text: 'الآن',
+                  style: AppTextTheme.headlineMedium.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: isSmall ? 22 : 24,
+                  ),
+                ),
+                TextSpan(
+                  text: ' مجانا',
+                  style: AppTextTheme.headlineMedium.copyWith(
+                    color: Colors.white,
+                    fontSize: isSmall ? 22 : 24,
+                  ),
+                ),
+              ],
             ),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: AppDimensions.paddingM),
-          Text(
-            AppStrings.ctaSubtitle,
-            style: AppTextTheme.bodyLarge.copyWith(
-              color: Colors.white70,
-              fontSize: isSmall ? 14 : 16,
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: 'انضم إلى آلاف المتعلمين وابدأ رحلتك نحو ',
+                  style: AppTextTheme.bodyLarge.copyWith(
+                    color: Colors.white70,
+                    fontSize: isSmall ? 14 : 16,
+                  ),
+                ),
+                TextSpan(
+                  text: 'مستقبل أفضل',
+                  style: AppTextTheme.bodyLarge.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: isSmall ? 14 : 16,
+                  ),
+                ),
+              ],
             ),
             textAlign: TextAlign.center,
           ),
