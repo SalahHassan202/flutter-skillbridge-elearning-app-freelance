@@ -1,3 +1,5 @@
+// File: lib/features/home/widgets/hero_section.dart
+
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/app_text_theme.dart';
@@ -25,17 +27,92 @@ class HeroSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            AppStrings.heroTitle,
-            style: AppTextTheme.headlineLarge.copyWith(
-              fontSize: isSmall ? 22 : 28,
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text: 'ابدأ رحلتك نحو ',
+                  style: AppTextTheme.headlineLarge.copyWith(
+                    fontSize: isSmall ? 22 : 28,
+                    color: AppColors.textDark,
+                  ),
+                ),
+                TextSpan(
+                  text: 'مهارة جديدة',
+                  style: AppTextTheme.headlineLarge.copyWith(
+                    fontSize: isSmall ? 22 : 28,
+                    color: AppColors.primaryOrange,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                TextSpan(
+                  text: ' و ',
+                  style: AppTextTheme.headlineLarge.copyWith(
+                    fontSize: isSmall ? 22 : 28,
+                    color: AppColors.textDark,
+                  ),
+                ),
+                TextSpan(
+                  text: 'فرصة عمل',
+                  style: AppTextTheme.headlineLarge.copyWith(
+                    fontSize: isSmall ? 22 : 28,
+                    color: AppColors.primaryBlue,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                TextSpan(
+                  text: ' أفضل',
+                  style: AppTextTheme.headlineLarge.copyWith(
+                    fontSize: isSmall ? 22 : 28,
+                    color: AppColors.primaryOrange,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
             textAlign: TextAlign.start,
           ),
           const SizedBox(height: AppDimensions.paddingM),
-          Text(
-            AppStrings.heroSubtitle,
-            style: AppTextTheme.bodyLarge.copyWith(fontSize: isSmall ? 14 : 16),
+          RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(
+                  text:
+                      'تعلم مهارات عملية معالجة في سوق العمل من خلال كراسات قصيرة ومحتوى عملي يساعدك على الوصول إلى ',
+                  style: AppTextTheme.bodyLarge.copyWith(
+                    fontSize: isSmall ? 14 : 16,
+                  ),
+                ),
+                TextSpan(
+                  text: 'فرص عمل حرة',
+                  style: AppTextTheme.bodyLarge.copyWith(
+                    color: AppColors.primaryOrange,
+                    fontWeight: FontWeight.bold,
+                    fontSize: isSmall ? 14 : 16,
+                  ),
+                ),
+                TextSpan(
+                  text: ' وتحقيق ',
+                  style: AppTextTheme.bodyLarge.copyWith(
+                    fontSize: isSmall ? 14 : 16,
+                  ),
+                ),
+                TextSpan(
+                  text: 'دخل',
+                  style: AppTextTheme.bodyLarge.copyWith(
+                    color: AppColors.primaryBlue,
+                    fontWeight: FontWeight.bold,
+                    fontSize: isSmall ? 14 : 16,
+                  ),
+                ),
+                TextSpan(
+                  text: ' من مهاراتك',
+                  style: AppTextTheme.bodyLarge.copyWith(
+                    fontSize: isSmall ? 14 : 16,
+                  ),
+                ),
+              ],
+            ),
             textAlign: TextAlign.start,
           ),
           const SizedBox(height: AppDimensions.paddingL),
