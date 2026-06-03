@@ -22,7 +22,7 @@ class FeatureCard extends StatelessWidget {
         color: AppColors.cardBackground,
         borderRadius: BorderRadius.circular(AppDimensions.borderRadiusM),
       ),
-      child: Column(
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Icon(
@@ -30,18 +30,25 @@ class FeatureCard extends StatelessWidget {
             color: AppColors.primaryOrange,
             size: isSmall ? 28 : 32,
           ),
-          const SizedBox(height: AppDimensions.paddingM),
-          Text(
-            feature.title,
-            style: AppTextTheme.titleMedium.copyWith(
-              fontSize: isSmall ? 16 : 18,
-            ),
-          ),
-          const SizedBox(height: AppDimensions.paddingXS),
-          Text(
-            feature.description,
-            style: AppTextTheme.bodyMedium.copyWith(
-              fontSize: isSmall ? 12 : 14,
+          const SizedBox(width: AppDimensions.paddingM),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  feature.title,
+                  style: AppTextTheme.titleMedium.copyWith(
+                    fontSize: isSmall ? 16 : 18,
+                  ),
+                ),
+                const SizedBox(height: AppDimensions.paddingXS),
+                Text(
+                  feature.description,
+                  style: AppTextTheme.bodyMedium.copyWith(
+                    fontSize: isSmall ? 12 : 14,
+                  ),
+                ),
+              ],
             ),
           ),
         ],
