@@ -12,6 +12,11 @@ class HeroSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isSmall = ResponsiveUtils.isSmallPhone(context);
+    final bool isMedium = ResponsiveUtils.isMediumPhone(context);
+
+    double buttonHeight = 44.0;
+    if (isSmall) buttonHeight = 40.0;
+    if (isMedium) buttonHeight = 44.0;
 
     return Container(
       padding: EdgeInsets.all(
@@ -23,7 +28,7 @@ class HeroSection extends StatelessWidget {
           Text(
             AppStrings.heroTitle,
             style: AppTextTheme.headlineLarge.copyWith(
-              fontSize: isSmall ? 24 : 28,
+              fontSize: isSmall ? 22 : 28,
             ),
             textAlign: TextAlign.start,
           ),
@@ -42,10 +47,9 @@ class HeroSection extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryOrange,
                     foregroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(
-                      vertical: isSmall
-                          ? AppDimensions.paddingM
-                          : AppDimensions.buttonHeight,
+                    minimumSize: Size(0, buttonHeight),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: AppDimensions.paddingS,
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(
@@ -57,7 +61,7 @@ class HeroSection extends StatelessWidget {
                   child: Text(
                     AppStrings.joinNow,
                     style: AppTextTheme.buttonText.copyWith(
-                      fontSize: isSmall ? 14 : 16,
+                      fontSize: isSmall ? 13 : 15,
                     ),
                   ),
                 ),
@@ -69,10 +73,9 @@ class HeroSection extends StatelessWidget {
                   style: OutlinedButton.styleFrom(
                     foregroundColor: AppColors.primaryBlue,
                     side: const BorderSide(color: AppColors.primaryBlue),
-                    padding: EdgeInsets.symmetric(
-                      vertical: isSmall
-                          ? AppDimensions.paddingM
-                          : AppDimensions.buttonHeight,
+                    minimumSize: Size(0, buttonHeight),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: AppDimensions.paddingS,
                     ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(
@@ -84,7 +87,7 @@ class HeroSection extends StatelessWidget {
                     AppStrings.startLearning,
                     style: AppTextTheme.buttonText.copyWith(
                       color: AppColors.primaryBlue,
-                      fontSize: isSmall ? 14 : 16,
+                      fontSize: isSmall ? 13 : 15,
                     ),
                   ),
                 ),
